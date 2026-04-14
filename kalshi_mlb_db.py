@@ -16,7 +16,7 @@ trade_url = "https://api.elections.kalshi.com/trade-api/v2/historical/trades"
 
 # Filtering
 cutoff_date = datetime(2025, 9, 28)
-start_date = datetime(2025, 9, 28)
+start_date = datetime(2025, 3, 27)
 
 def fetch_market_hierarchy():
     cursor = ""
@@ -122,7 +122,7 @@ def fetch_and_store_all(hierarchy_data, db_name="kalshi_mlb.db"):
                 break
                 
             df = pd.DataFrame(trades)
-            df['created_time'] = pd.to_datetime(df['created_time'])
+            df['created_time'] = pd.to_datetime(df['created_time'], format='ISO8601', utc=True)
             df['yes_price_dollars'] = pd.to_numeric(df['yes_price_dollars']).astype(float)
             df['no_price_dollars'] = pd.to_numeric(df['no_price_dollars']).astype(float)
             df['count_fp'] = pd.to_numeric(df['count_fp']).astype(float)
