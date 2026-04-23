@@ -32,7 +32,7 @@ class ArbitrageTracker:
     def __init__(self, db_path: str = 'kalshi_unified_market_data.db', event_ticker: str = None, 
                  spread_threshold: float = 0.02, output_dir: str = 'arbitrage_results',
                  pairs_to_analyze: List[str] = None, candlestick_db: str = 'kalshi_candlesticks.db',
-                 include_candlesticks: bool = True, mapping_db_path: str = 'kalshi_event_market_map.db'):
+                 include_candlesticks: bool = False, mapping_db_path: str = 'kalshi_event_market_map.db'):
         """
         Initialize the tracker.
         
